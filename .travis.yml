@@ -3,9 +3,7 @@ language: python
 python: 3.6
 
 before_install:
-  - cd ..
-  - git clone --branch=master https://github.com/xumi1993/blog.git
-  - cd blog
+  - git clone --branch=master https://github.com/xumi1993/blog.git ./public
 
 install:
   - curl -L https://raw.githubusercontent.com/seisman/install/master/install-hugo.sh | bash
@@ -17,4 +15,4 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  local_dir: ../blog/public
+  local_dir: ./public
