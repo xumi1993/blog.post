@@ -10,10 +10,7 @@ install:
   - pip install pygments
 
 script:
-  - ./hugo
+  - ./hugo --baseUrl="https://xumi1993.github.io/blog"
 
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: ${GH_TOKEN}
-  local_dir: ./public
+  script: deplot.sh
