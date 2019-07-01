@@ -1,0 +1,19 @@
+language: python
+python: 3.6
+
+before_install:
+  - cd ..
+  - git clone --branch=master https://github.com/xumi1993/blog.git
+  - cd blog
+
+install:
+  - curl -L https://raw.githubusercontent.com/seisman/install/master/install-hugo.sh | bash
+  - pip install pygments
+
+script:
+  - ./hugo
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: ../blog/public
