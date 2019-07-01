@@ -12,5 +12,5 @@ install:
 script:
   - ./hugo --baseUrl="https://xumi1993.github.io/blog"
 
-deploy:
+after_success:
   script: deplot.sh
