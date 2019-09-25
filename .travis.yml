@@ -10,7 +10,7 @@ install:
   - pip install pygments
 
 script:
-  - ./hugo --baseUrl="https://xumi1993.github.io/blog"
+  - ./hugo --baseUrl="https://blog.xumijian.me"
 
 after_success:
   script: deplot.sh
