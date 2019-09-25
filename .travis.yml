@@ -13,4 +13,4 @@ script:
   - ./hugo --baseUrl="https://blog.xumijian.me"
 
 after_success:
-  script: deplot.sh
+  script: deploy.sh
