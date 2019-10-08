@@ -11,8 +11,10 @@ install:
 
 script:
   - ./hugo --baseUrl="https://blog.xumijian.me"
-  - cd public
-  - git add .
-  - git commit -m `date +"%Y.%m.%dT%H:%M%S"`
-  - git push origin master
 
+deploy:
+  - provider: script
+    script: ./deploy.sh
+    skip_cleanup: true
+    on:
+      branch: master
