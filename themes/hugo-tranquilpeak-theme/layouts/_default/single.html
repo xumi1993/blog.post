@@ -34,10 +34,12 @@
               {{ end }}
             {{ end }}
             {{ partial "post/actions.html" . }}
+            {{ partial "gitalk.html" . }}
             {{ if not (eq .Params.comments false) }}
-              {{ if .Site.DisqusShortname }}
+              <!-- {{ if .Site.DisqusShortname }}
                 {{ partial "post/disqus.html" . }}
-              {{ end }}
+              {{ end }} -->
+              
             {{ end }}
           </div>
         </article>
