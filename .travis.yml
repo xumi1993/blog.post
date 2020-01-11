@@ -3,9 +3,7 @@ language: python
 python: 3.6
 
 before_install:
-  - git clone --branch=master https://github.com/xumi1993/blog.git ./public-old
-  - mkdir public
-  - cp -r ./public-old/.git* public/
+  - git clone --branch=master https://github.com/xumi1993/blog.git ./public
 
 
 install:
