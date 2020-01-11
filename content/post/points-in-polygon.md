@@ -6,7 +6,6 @@ categories:
 tags:
 - Geophysics
 - Python
-keywords:
 ---
 
 <!--more-->
