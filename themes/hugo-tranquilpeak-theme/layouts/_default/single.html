@@ -34,11 +34,23 @@
               {{ end }}
             {{ end }}
             {{ partial "post/actions.html" . }}
-            {{ if not (eq .Params.comments false) }}
-              {{ if .Site.DisqusShortname }}
-                {{ partial "post/disqus.html" . }}
-              {{ end }}
-            {{ end }}
+            <div id="gitalk-container"></div>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+            <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+            <script type="text/javascript">
+                  var gitalk = new Gitalk({
+                    id: '{{ .Date }}',
+                    title: '{{ .Title }}',
+                    clientID: '3a3b190b1de92a4f6922',
+                    clientSecret: '19f7856d5352fd8ae126ac92a43ac7897fb9a4e3',
+                    repo: 'blog.post',
+                    owner: 'xumi1993',
+                    admin: ['xumi1993'],
+                    body: decodeURI(location.href),
+                  });
+                  gitalk.render('gitalk-container');
+            </script>
+            
           </div>
         </article>
         {{ partial "footer.html" . }}
@@ -47,5 +59,7 @@
         {{ partial "post/actions.html" . }}
       </div>
       {{ partial "post/share-options.html" . }}
+      
     </div>
 {{ partial "foot.html" . }}
+

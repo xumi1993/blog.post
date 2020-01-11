@@ -17,7 +17,7 @@ languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 title = "Note to Tech"
 theme = "hugo-tranquilpeak-theme"
-disqusShortname = "xumi1993"
+# disqusShortname = "xumi1993"
 relativeurls = true
 # googleAnalytics = "UA-123-45"
 paginate = 7
@@ -188,3 +188,5 @@ canonifyurls = true
   # Customize copyright value "© 2016 <CUSTOMIZATION>. All Rights Reserved"
   # [params.footer]
   #   copyright = "<a href=\"https://github.com/kakawait\">kakawait</a>"
+
+ 
