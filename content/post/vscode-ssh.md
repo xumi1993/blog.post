@@ -3,13 +3,10 @@ title: "在VSCode中使用Remote-SSH进行远程开发"
 date: 2019-06-18T12:30:12+08:00
 categories:
 - Linux
-- subcategory
 tags:
 - vscode
 - SSH
 - Linux
-keywords:
-- tech
 #thumbnailImage: //example.com/image.jpg
 ---
 ![](https://microsoft.github.io/vscode-remote-release/images/ssh-readme.gif)

@@ -2,7 +2,7 @@
 title: "三维数据体生成与切片"
 date: 2020-01-11T21:17:48+08:00
 categories:
-- 地震学技术
+- Seismology
 tags:
 - Geophysics
 - 差值

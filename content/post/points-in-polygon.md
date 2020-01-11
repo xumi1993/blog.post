@@ -2,7 +2,7 @@
 title: "判断地理坐标点是否在多边形内的Python实现"
 date: 2019-10-08T21:05:16+08:00
 categories:
-- 地震学技术
+- Seimology
 tags:
 - Geophysics
 - Python
