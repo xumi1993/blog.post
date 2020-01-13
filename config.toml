@@ -591,7 +591,7 @@ uglyURLs = false
     # Note: render only in production
     #       environment
 
-    enableComments = false
+    enableComments = true
     # Note: *global settings*
     #       `comments` in post’s Front Matter
     #       has a higher priority than here
@@ -601,10 +601,10 @@ uglyURLs = false
     disqusShortname = ""
 
     ## Valine
-    enableValine = false
-    valineAppId = ""
-    valineAppKey = ""
-    valinePlaceholder = "Just go go"
+    enableValine = true
+    valineAppId = "pDTTIwKxG0jJoQFkUaQ1Jeqo-gzGzoHsz"
+    valineAppKey = "LjDsQoPgO74ji2IoczXTiRM5"
+    valinePlaceholder = "Pls say something"
     valineNotify = false
     valineVerify = false
     valinePath = ""
@@ -612,7 +612,7 @@ uglyURLs = false
     valineMeta = ["nick", "mail", "link"]
     valinePageSize = 10
     valineLang = "en"
-    valineVisitor = false
+    valineVisitor = true
     valineHighlight = true
     avatarForce = false
     valineRecordIP = false
