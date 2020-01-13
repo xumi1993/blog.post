@@ -613,8 +613,8 @@ uglyURLs = false
 
     ## Valine
     enableValine = true
-    valineAppId = ""
-    valineAppKey = ""
+    valineAppId = "pDTTIwKxG0jJoQFkUaQ1Jeqo-gzGzoHsz"
+    valineAppKey = "LjDsQoPgO74ji2IoczXTiRM5"
     valinePlaceholder = "Pls say something"
     valineNotify = false
     valineVerify = false
