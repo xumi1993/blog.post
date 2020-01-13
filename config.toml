@@ -1,11 +1,10 @@
 ##########################################
 # Site Settings
 
-baseURL = "https://blog.xumijian.me"
+baseURL = "https://blog.xumijian.me/"
 title = "Note to Tech"
 languageCode = "en-US"
 hasCJKLanguage = false
-disableKinds = ["taxonomy", "taxonomyTerm"]
 # Copyright information (Markdown supported)
 # copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)"
 
@@ -26,13 +25,13 @@ pluralizeListTitles = false
 summaryLength = 42
 
 # Enable Emoji emoticons support?
-enableEmoji = true
+enableEmoji = false
 
 # Text to display for footnote return links
 footnoteReturnLinkContents = "↩"
 
 # Enable `.GitInfo` object for each page?
-enableGitInfo = true
+enableGitInfo = false
 
 # Enable generation of `robots.txt` file?
 enableRobotsTXT = true
@@ -40,7 +39,7 @@ enableRobotsTXT = true
 # Number of items per page in paginated 
 # lists (valid for the `posts` homepage
 # layout in MemE)
-paginate = 7
+paginate = 5
 
 # URL related
 disablePathToLower = false
@@ -95,11 +94,11 @@ uglyURLs = false
 # Author’s information
 [author]
     # Name
-    name = "Mijian"
+    name = "Mijian Xu"
     # Email
     email = "gomijianxu@gmail.com"
     # Motto or introduction
-    motto = "千里之行始于足下"
+    motto = ""
     # Avatar
     avatar = "/icons/avatar.jpeg"
     # Personal website, default: baseURL
@@ -215,16 +214,6 @@ uglyURLs = false
         weight = 5
         pre = "internal"
         post = "user-circle"
-    [[menu.socials]]
-        url = "https://github.com/xumi1993"
-        name = "GitHub"
-        weight = 1
-        pre = "external"
-    [[menu.socials]]
-        url = "mailto:gomijianxu@gmail.com"
-        name = "Email"
-        weight = 10
-        pre = "external"
 
 
 
@@ -258,7 +247,7 @@ uglyURLs = false
     # family can be configured in typography
     # section at the bottom of this file.
     # Unit: em
-    siteBrandFontSize = 200
+    siteBrandFontSize = 5
     siteBrandFontColor = "#fff"
 
     # siteBrandBackgroundColor = "hsl(240, 8%, 12%)"
@@ -320,7 +309,7 @@ uglyURLs = false
     siteLogo = "/icons/apple-touch-icon.png"
     # Note: used for JSON-LD, Open Graph
 
-    siteDescription = "Mijian's Blogs"
+    siteDescription = ""
     # Note: used for HTML head meta, JSON-LD,
     #       Open Graph, Atom, RSS
 
@@ -588,7 +577,7 @@ uglyURLs = false
     ######################################
     # MathJax (chemical equation supported)
 
-    enableMathJax = false
+    enableMathJax = true
     # Note: *global settings*
     #       `mathjax` in post’s Front Matter
     #       has a higher priority than here
@@ -646,7 +635,7 @@ uglyURLs = false
     # Note: render only in production
     #       environment
 
-    enableGoogleAnalytics = true
+    enableGoogleAnalytics = false
 
     trackingCodeType = "gtag"
     # Note: gtag or analytics

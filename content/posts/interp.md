@@ -5,10 +5,10 @@ categories:
 - Seismology
 tags:
 - Geophysics
-- 差值
+- 插值
 - 网格化
 ---
-我们在计算得到的数据通常是非等间隔网格，为了用GMT进行2D可视化，需要将数据网格化后进行差值。
+我们在计算得到的数据通常是非等间隔网格，为了用GMT进行2D可视化，需要将数据网格化后进行插值。
 
 <!--more--> 
 
@@ -26,7 +26,7 @@ tags:
 9.998090145	108.4348529	116.8293289	0.013916044	-0.012845078	-5.31E-06	1600.383762	3299.961929	3924717946	1.00E+21
 ```
 ## 网格化说明
-由于这样的数据点是非等间隔的，没有办法进行切片时所需要的差值操作，所以我先将数据进行了三维网格化。这里我选用了Python语言和它的科学计算模块Numpy、Scipy进行网格化。Matlab也可以实现类似功能，核心函数也叫`griddata`。
+由于这样的数据点是非等间隔的，没有办法进行切片时所需要的插值操作，所以我先将数据进行了三维网格化。这里我选用了Python语言和它的科学计算模块Numpy、Scipy进行网格化。Matlab也可以实现类似功能，核心函数也叫`griddata`。
  ``` Python
 import numpy as np
 from scipy.interpolate import griddata
@@ -59,13 +59,13 @@ def dat2npz(fname='data', latmin=10, latmax=60, lonmin=70, lonmax=140, depmin=0,
  ```
 
 ## 2. 平面和剖面的切片
-用GMT绘制二维图像需要从上一步网格好的数据文件中对某个平面或剖面进行切片。对平面的切片简单一些，对剖面的切片则需要先对大圆弧路径进行差值，生成数据点坐标，再用这些坐标对三维数据体进行差值。
+用GMT绘制二维图像需要从上一步网格好的数据文件中对某个平面或剖面进行切片。对平面的切片简单一些，对剖面的切片则需要先对大圆弧路径进行插值，生成数据点坐标，再用这些坐标对三维数据体进行插值。
 ### 2.1 对数据的平面切片  (`cut_plane.py`)
 ```Python
 import numpy as np
 from scipy.interpolate import interpn
 
-# 在指定的区域内生成数据点坐标，理论上说这些点也可以是不等间隔的，但是GMT绘图时依旧需要网格化，所以这里还是使用等间隔差值。
+# 在指定的区域内生成数据点坐标，理论上说这些点也可以是不等间隔的，但是GMT绘图时依旧需要网格化，所以这里还是使用等间隔插值。
 def init_plane(lat1=15, lon1=65, lat2=55, lon2=140, val=2, depth=200):
     lat = np.arange(lat1, lat2, val)
     lon = np.arange(lon1, lon2, val)
@@ -75,12 +75,12 @@ def init_plane(lat1=15, lon1=65, lat2=55, lon2=140, val=2, depth=200):
             points.append([depth, la, lo])
     return np.array(points)
 
-# 生成的数据点对三维数据体差值
+# 生成的数据点对三维数据体插值
 def interall(data, points):
     inter_data = np.zeros([points.shape[0], 2])
     inter_data[:, 0] = interpn((data['dep'], data['lat'], data['lon']), data['vew'], points, bounds_error=False, fill_value=None)
     inter_data[:, 1] = interpn((data['dep'], data['lat'], data['lon']), data['vns'], points, bounds_error=False, fill_value=None)
-    # 返回时同时将数据点坐标那三列于差值得到的数据拼贴后一起输出
+    # 返回时同时将数据点坐标那三列于插值得到的数据拼贴后一起输出
     return np.hstack((points[:, 1:3], inter_data))
 
 
@@ -144,11 +144,11 @@ def velproj(vew, vns, lat1, lon1, lat2, lon2):
     return vr, vt
 ```
 
-#### 数据差值
-差值和平面切片是类似的。只有以下几点不同：
+#### 数据插值
+插值和平面切片是类似的。只有以下几点不同：
 
 - 速度为坐标系转化后的速度。
-- 需要对垂直方向速度，温度和密度等进行差值。
+- 需要对垂直方向速度，温度和密度等进行插值。
 
 ```Python
 def interall(data, vr, vt, points):
