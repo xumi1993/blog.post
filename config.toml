@@ -209,7 +209,7 @@ uglyURLs = false
         pre = "internal"
         post = "tags"
     [[menu.main]]
-        url = "/about/"
+        url = "https://home.xumijian.me/"
         name = "About"
         weight = 5
         pre = "internal"
