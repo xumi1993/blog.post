@@ -162,7 +162,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     verify = true # Verification code
     avatar = 'mm' 
     placeholder = '说点什么吧...'
-    visitor = false
+    visitor = true
 
   [params.flowchartDiagrams]# see https://blog.olowolo.com/example-site/post/js-flowchart-diagrams/
     enable = false
@@ -173,7 +173,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     options = ""            # default: "{theme: 'simple'}"
 
   [params.busuanzi]         # count web traffic by busuanzi                             # 是否使用不蒜子统计站点访问量
-    enable = false
+    enable = true
     siteUV = true
     sitePV = true
     pagePV = true
