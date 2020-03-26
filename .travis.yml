@@ -8,7 +8,8 @@ before_install:
 
 install:
   - bash install-hugo.sh
-  - hugo version
+  - rm -rf themes/even
+  - git clone https://github.com/xumi1993/hugo-theme-even.git themes/even
   - pip install pygments
 
 script:
