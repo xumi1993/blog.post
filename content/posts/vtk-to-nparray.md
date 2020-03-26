@@ -18,7 +18,6 @@ VTK文件通常生成与大型并行计算程序，程序有时会将整个网�
 ```python
 import numpy as np
 import glob
-from os.path import join
 import pyvista as pv
 ```
 
