@@ -8,6 +8,7 @@ before_install:
 
 install:
   - bash install-hugo.sh
+  - hugo version
   - pip install pygments
 
 script:
