@@ -7,7 +7,7 @@ before_install:
 
 
 install:
-  - curl -L https://raw.githubusercontent.com/seisman/install/master/install-hugo.sh | bash
+  - bash install-hugo.sh
   - pip install pygments
 
 script:
