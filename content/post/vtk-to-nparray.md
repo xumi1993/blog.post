@@ -2,7 +2,7 @@
 title: "VTK数据的重采样与三维矩阵化"
 date: 2020-03-26T15:17:48+08:00
 categories:
-- Python
+- Seismology
 tags:
 - VTK
 - Grid
@@ -29,14 +29,15 @@ import pyvista as pv
 blocks = [pv.read(fname) for fname in sorted(glob.glob('*.vtk'))]
 ```
 ### 拼合所有区块
-*PyVista*提供了`MultiBlock`用于拼合不同区块，输出的`mesh`为`UnstructuredGrid`类型，可以用于后续处理
+
+PyVista提供了`MultiBlock`用于拼合不同区块，输出的`mesh`为`UnstructuredGrid`类型，可以用于后续处理
 ```python
 points_vtk = pv.MultiBlock(blocks)
 mesh = points_vtk.combine()
 ```
 
 ## 2. 对数据网格化并重采样
-由于网格设计的不同这些网格可能是非均匀的，这样就无法将其赋予一个规则矩阵。*PyVista*提供了通过重采样进行网格话的方式。
+由于网格设计的不同这些网格可能是非均匀的，这样就无法将其赋予一个规则矩阵。PyVista提供了通过重采样进行网格话的方式。
 ```python
 grid = pv.create_grid(mesh, dimensions=(600, 60, 100))
 image = grid.sample(mesh)
@@ -48,7 +49,7 @@ image = grid.sample(mesh)
 mat = image.point_arrays['values'].reshape((image.dimensions[::-1]))
 ```
 
-- `'values'`取决于原始数据的键名，如Specfsem生成的网格，数值名为`gll_data`。
+- `'values'`取决于原始数据的键名，如Specfsem3D生成的网格，数值名为`gll_data`。
   
 同时我们可以定义将每个坐标轴也转化为`np.ndarray`格式
 ```python
