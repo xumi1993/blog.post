@@ -162,7 +162,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     verify = true # Verification code
     avatar = 'mm' 
     placeholder = '说点什么吧...'
-    visitor = true
+    visitor = false
 
   [params.flowchartDiagrams]# see https://blog.olowolo.com/example-site/post/js-flowchart-diagrams/
     enable = false
