@@ -13,8 +13,8 @@ tags:
 <!--more-->
 
 ## 生成一个本地的 Python 包
-- 在本地python目录中新建`setup.py`文件。\\
-- 将源码放置在一个新建的目录中，目录名为模块名。\\
+- 在本地python目录中新建`setup.py`文件。
+- 将源码放置在一个新建的目录中，目录名为模块名。
 - 在`setup.py`中写入包的配置信息。
 
 ```python
@@ -42,14 +42,14 @@ setup(
 )
 ```
 
-- 完成后其目录结构\\
-`SFT` ------ `sft` ------ `get_events.py`\\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | --- `get_resp.py` \\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | --- ……\\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | --- `setup.py`\\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | ---  ……\\
+- 完成后其目录结构\
+`SFT` ------ `sft` ------ `get_events.py`\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | --- `get_resp.py` \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | --- ……\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | --- `setup.py`\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | ---  ……
 - 由于这个例子只依赖Python标准库，所以如果需要依赖其他第三方模块需要在`setup.py`中加一个字段：
-```python
+```Python
 install_requires=[
         'Twisted>=13.1.0',
         'w3lib>=1.17.0',
@@ -66,7 +66,7 @@ install_requires=[
 
 ## 编译Python包
 使用下面命令打包一个源代码的包
-```python
+```
 python setup.py sdist build
 ```
 这样在当前目录的dist文件夹下，就会多出一个以tar.gz结尾的包了。
@@ -79,12 +79,12 @@ python setup.py sdist build
 
 - 安装`twine`
 
-    ```python
-sudo pip install twine
-```
+    ```bash
+    sudo pip install twine
+    ```
 - 上传包
 
-    ```python
-twine upload dist/*
-```
+    ```bash
+    twine upload dist/*
+    ```
 命令行中会提示输入用户名密码，输入PyPI的用户名密码就发布成功了。
