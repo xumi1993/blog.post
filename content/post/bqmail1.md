@@ -1,5 +1,5 @@
 ---
-title: "BQMail2.0: 向IRIS DMC发送数据请求的Python模块（数据查询）"
+title: "BQMail2.0: 向IRIS DMC发送数据请求的Python模块（1. 数据查询）"
 date: 2020-06-09T16:58:02+08:00
 # draft: true
 categories:
@@ -25,9 +25,9 @@ BQMail是用于向IRIS申请数据的Python模块。2016年我们完成了BQMail
 pip install bqmail
 ```
 ### 通过源码安装
-BQMail的源码目前托管在南京大学的Git服务器上，先克隆该项目：
+BQMail的源码目前托管在Github上，先克隆该项目到本地：
 ```
-git clone https://git.nju.edu.cn/xumi1993/bqmail2.0.git bqmail
+git clone https://github.com/xumi1993/bqmail.git bqmail
 ```
 然后进入目录并安装
 ```

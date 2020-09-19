@@ -1,5 +1,5 @@
 ---
-title: "BQMail2.0: 向IRIS DMC发送数据请求的Python模块（发送申请）"
+title: "BQMail2.0: 向IRIS DMC发送数据请求的Python模块（2. 发送申请）"
 date: 2020-08-26T11:31:38+08:00
 draft: false
 categories:
@@ -41,7 +41,7 @@ bq = BQMail('xxx@xxx.com', server='smtp.xxx.com', password='xxx', username='bqma
 ```Python
 bq.query_stations(network='CB', station='LZH')
 ```
-这里所有的参数信息与[FDSN Client Usage](https://service.iris.edu/irisws/fedcatalog/1/)中相同。
+**这里所有的参数信息与[FDSN Client Usage](https://service.iris.edu/irisws/fedcatalog/1/)中相同。**
 
 ## 发送连续数据申请
 部分研究需要发送连续数据申请，即从默一时刻到另一时，以隔固定的时间间隔作为SAC文件的时长。
@@ -56,7 +56,6 @@ bq.send_mail(arrange='continue', starttime=UTCDateTime(2018, 1, 1),
 - `time_val_in_hours`为单位文件的时间长度（时间单位为小时）。
 - `channel`和`location`分别为所申请的通道名和位置名，详见[BREQ_FAST Manuals](http://ds.iris.edu/ds/nodes/dmc/manuals/breq_fast/)。
 
-
 ## 发送事件数据申请
 另一种申请方式为事件数据申请，即根据搜索的地震事件信息，以某一参考时刻为标准发送数据申请。
 
@@ -67,7 +66,7 @@ bq.send_mail(arrange='continue', starttime=UTCDateTime(2018, 1, 1),
 bq.query_events(starttime=UTCDateTime(2010, 1, 1), endtime=UTCDateTime(2010, 3, 1),
                 minmagnitude=5.5, catalog='GCMT')
 ```
-这里所有的参数信息与[fdsnws-event web service](https://service.iris.edu/fdsnws/event/1/)中相同。
+**这里所有的参数信息与[fdsnws-event web service](https://service.iris.edu/fdsnws/event/1/)中相同。**
 
 ### 发送数据申请
 获取所需事件信息后，设置截取时窗的标准，即可根据台站和事件发送数据申请。
