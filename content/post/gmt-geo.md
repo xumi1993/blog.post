@@ -15,9 +15,9 @@ draft: False
 
 ### 下载链接：
 - [地质年代文件](/source/geo3al.xy2)
-- [地质年代色标文件（GTS2012）](/source/geoage.cpt)
+- [地质年代色标文件（GTS2012_periods）](/source/geoage.cpt)
 
-本文提供的地质年代色标文件最小单位是“纪”，因此在绘制小区域时可能经度较低，有兴趣的读者可以尝试在最小精度为“世”的色标([GTS2012_epochs](http://soliton.vm.bytemark.co.uk/pub/cpt-city/heine/GTS2012_epochs.cpt))中进行修改，来绘制更精细的图像，但这时图注则需要自行修改。
+本文提供的地质年代色标文件最小单位是“纪”，因此在绘制小区域时可能精度较低，有兴趣的读者可以尝试在最小精度为“世”的色标([GTS2012_epochs](http://soliton.vm.bytemark.co.uk/pub/cpt-city/heine/GTS2012_epochs.cpt))中进行修改，来绘制更精细的图像，但这时图注则需要自行修改。
 ## GMT脚本
 ```shell
 #!/bin/bash
