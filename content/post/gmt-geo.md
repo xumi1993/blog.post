@@ -11,12 +11,13 @@ draft: False
 ## 数据来源
 地质图的数据来自美国USGS（[Generalized Geology of the Far East (geo3al)](https://catalog.data.gov/dataset/generalized-geology-of-the-far-east-geo3al)）其分辨率为1:4,000,000。
 
-本文已采用与[Po-Chin Tseng的博客](https://jimmytseng79.github.io/GMT5_tutorials/geology_map.html)相同的方法将原始的`.shp`格式文件转换成了GMT可用的`.xyz`格式。另外可以从[cpt-city](http://soliton.vm.bytemark.co.uk/pub/cpt-city/heine/index.html)不同的色标为地质图填色。
+本文已采用与[Po-Chin Tseng的博客](https://jimmytseng79.github.io/GMT5_tutorials/geology_map.html)相同的方法将原始的`.shp`格式文件转换成了GMT可用的`.xyz`格式。另外可以从[cpt-city](http://soliton.vm.bytemark.co.uk/pub/cpt-city/heine/index.html)下载不同的色标为地质图填色。
 
 ### 下载链接：
 - [地质年代文件](/source/geo3al.xy2)
-- [地质年代色标文件（GTS2012）](/source/geoage.cpt)
+- [地质年代色标文件（GTS2012_periods）](/source/geoage.cpt)
 
+本文提供的地质年代色标文件最小单位是“纪”，因此在绘制小区域时可能精度较低，有兴趣的读者可以尝试在最小精度为“世”的色标([GTS2012_epochs](http://soliton.vm.bytemark.co.uk/pub/cpt-city/heine/GTS2012_epochs.cpt))中进行修改，来绘制更精细的图像，但这时图注则需要自行修改。
 ## GMT脚本
 ```shell
 #!/bin/bash
