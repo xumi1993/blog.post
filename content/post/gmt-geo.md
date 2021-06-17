@@ -63,61 +63,70 @@ J     52/178/201 ; Jurassic
 
 ## GMT脚本
 ```shell
-#!/bin/bash
-ps=geo3al.ps
 data=geo3al.xy2
-# cpt=GTS2012_epochs.cpt
 cpt=geoage.cpt
-rocksize=400
-
-gmt set FONT_ANNOT_PRIMARY 10
-gmt set MAP_FRAME_WIDTH 0.08
-gmt set MAP_TICK_LENGTH_PRIMARY 0.08
-
-gmt pscoast -R70/150/15/55 -JM8i -Baf -Dl -G255 -Wthinnest -EAS -K -BWSne > $ps
-gmt psxy $data -R -J -C$cpt -L -K -O >> $ps
-
-gmt gmtconvert $data -S"|v|" > tmp
-awk '/^[0-9]/{print $1,"p'$rocksize'/28:F100B"$2,$3,"p'$rocksize'/28:F100B"$4}' $cpt > tmp.cpt
-gmt psxy tmp -R -J -Ctmp.cpt -L -K -O >> $ps
-
-gmt gmtconvert $data -S"|i|" > tmp
-awk '/^[0-9]/{print $1,"p'$rocksize'/29:F100B"$2,$3,"p'$rocksize'/29:F100B"$4}' $cpt > tmp.cpt
-gmt psxy tmp -R -J -Ctmp.cpt -L -K -O >> $ps
-
-gmt gmtconvert $data -S"|w|" > tmp
-awk '/^[0-9]/{print $1,"p'$rocksize'/44:F100B"$2,$3,"p'$rocksize'/44:F100B"$4}' $cpt > tmp.cpt
-gmt psxy tmp -R -J -Ctmp.cpt -L -K -O >> $ps
-
-gmt pscoast -R -J -E=AS -O -K -SCADETBLUE1 >> $ps
-
+rocksize=500
 lengsize=0.15i
-gmt set FONT_ANNOT_PRIMARY 7p
-gmt pslegend -R -J -O -DJBR+w200p/57p+jBR+l1.3 -F+p0.7p+g255 -C3p/3p -K >> $ps<<eof
+
+function shp2xyz(){
+    ogr2ogr -f GMT geo2al.gmt geo3al.shp -t_srs EPSG:4326
+    sed 's/#[[:space:]]@D[[:digit:]]*.[[:digit:]]*|[[:digit:]]*.[[:digit:]]*|\(.*\)|\(.*\)|\(.*\)/> -Z\2 |\1|\2/g; /^#/d' geo3al.gmt > $data
+}
+
+function plot_age_legend(){
+    cat > tmp << EOF
 H 10 3 Age of rock units
 G 1p
 N 3
-S 0.3c r $lengsize 229/204/132 0.3p 0.7c Cambrian
-S 0.3c r $lengsize 102/192/146 0.3p 0.7c Ordovician
-S 0.3c r $lengsize 179/225/194 0.3p 0.7c Silurian
-S 0.3c r $lengsize 241/213/118 0.3p 0.7c Devonian
-S 0.3c r $lengsize 153/194/181 0.3p 0.7c Carboniferous
-S 0.3c r $lengsize 251/141/118 0.3p 0.7c Permian
-S 0.3c r $lengsize 227/185/219 0.3p 0.7c Triassic
-S 0.3c r $lengsize 166/221/224 0.3p 0.7c Jurassic
-S 0.3c r $lengsize 191/227/93 0.3p 0.7c Cretaceous
-S 0.3c r $lengsize 253/192/145 0.3p 0.7c Paleogene
-S 0.3c r $lengsize 255/255/115 0.3p 0.7c Neogene
-eof
-gmt pslegend -R -J -O -DJBR+w75p/57p+jBR+l1.3+o200p/0p -F+p0.7p+g255 -C3p/3p -K >> $ps<<eof
-H 10 3 Rock type
-G 5p
-S 0.3c r 0.2i p400/28:B255 0.3p 0.7c Volcanic rocks
-G 5p
-S 0.3c r 0.2i p400/29:B255 0.3p 0.7c Intrusive rocks
-eof
+EOF
+    awk '!/^($|B|F|#)/{print $0}' $cpt | while read label color period
+    do
+        if [ $label == "N" ]; then period=Neogene; fi
+        if [ $label == "MZT" ]; then continue; fi
+        echo "S 0.3c r $lengsize $color 0.3p 0.7c $period" >> tmp
+    done
+    gmt legend tmp -DJBR+w300p/157p+jBR+o0c/-100p+l1.3 -F+p0.7p+g255 -C3p/3p
 
-gmt psxy -R -J -O -T >> $ps
-gmt psconvert -A -P -TG $ps
-rm gmt* $ps tmp tmp.cpt 
+    gmt legend -DJBR+w150p/50p+jBR+o0c/57p+l1.9 -F+p0.7p+g255 -C3p/1p <<EOF
+H 10 3 Rock type
+
+N 2
+S 0.3c r 0.2i p400/28:B255 0.3p 0.7c Volcanic rocks
+S 0.3c r 0.2i p400/29:B255 0.3p 0.7c Intrusive rocks
+S 0.3c r 0.2i p400/44:B255 0.3p 0.7c Ultrabasic igneous rock or ophiolites 
+EOF
+}
+
+shp2xyz
+gmt begin geo3al png
+    gmt set FONT_ANNOT_PRIMARY 10
+    gmt set MAP_FRAME_WIDTH 0.08
+    gmt set MAP_TICK_LENGTH_PRIMARY 0.08
+
+    gmt coast -R70/150/13/55 -JM8.6i -Baf -Df -G255 -BWsNe
+    gmt plot $data -C$cpt -L
+
+    gmt gmtconvert $data -S"|v|" > tmp
+    awk '!/^($|B|F|#)/{print $1,"p'$rocksize'/28:F100B"$2}' $cpt > tmp.cpt
+    gmt plot tmp -Ctmp.cpt -L
+
+    gmt gmtconvert $data -S"|i|" > tmp
+    awk '!/^($|B|F|#)/{print $1,"p'$rocksize'/29:F100B"$2}' $cpt > tmp.cpt
+    gmt plot tmp -Ctmp.cpt -L
+
+    gmt gmtconvert $data -S"|w|" > tmp
+    awk '!/^($|B|F|#)/{print $1,"p'$rocksize'/44:F100B"$2}' $cpt > tmp.cpt
+    gmt plot tmp -Ctmp.cpt -L
+
+    gmt coast -SCADETBLUE1
+
+    gmt set FONT_ANNOT_PRIMARY 7p
+    plot_age_legend 
+
+    rm tmp  tmp.cpt
+gmt end show
+ 
 ```
+
+## 特别鸣谢
+这次脚本做了大量的修改，非常感谢[田冬冬博士](https://me.seisman.info/)、[姚家园博士](https://core-man.github.io/academic-homepage/)和[GMT中文社区](https://docs.gmt-china.org/)的其他小伙伴的建议和努力，在和他们的讨论中也使我受益匪浅。
