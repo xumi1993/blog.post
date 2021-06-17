@@ -28,7 +28,7 @@ ogr2ogr -f GMT geo2al.gmt geo3al.shp -t_srs EPSG:4326
 - 确保在安装GMT后所添加的环境变量中包含`PROJ_LIB`这个变量，请参考[GMT安装说明](https://docs.gmt-china.org/latest/install/macOS/#gmt)
 
 ### 修改文件头段
-格式转换后`geo2al.gmt`文件的头段为
+格式转换后`geo3al.gmt`文件的头段为
 ```
 # @D21315149832.578|1546682.830|v|J|J
 # @P
