@@ -23,6 +23,7 @@ ogr2ogr -f GMT geo2al.gmt geo3al.shp -t_srs EPSG:4326
 ```
 
 这一步需要注意一下几点
+
 - 其中`.dbf`, `.prj` 和 `.shx`文件路径需要与该命令的运行路径为同一路径。
 - 确保在安装GMT后所添加的环境变量中包含`PROJ_LIB`这个变量，请参考[GMT安装说明](https://docs.gmt-china.org/latest/install/macOS/#gmt)
 
@@ -58,6 +59,7 @@ J     52/178/201 ; Jurassic
 
 ## 下载链接：
 这里我们提供了已经完成上述步骤的地质年代文件和地质年代色标文件，可以在GMT中直接使用。
+
 - [地质年代文件](/source/geo3al.xy2)
 - [地质年代色标文件（GTS2012_periods）](/source/geoage.cpt)
 
