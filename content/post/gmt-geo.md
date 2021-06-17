@@ -5,7 +5,7 @@ draft: False
 ---
 
 ![](/img/gmt-map/geo3al.png)
-用GMT绘制绘制地质图一直是一个难题，此前[Po-Chin Tseng的博客](https://jimmytseng79.github.io/GMT5_tutorials/geology_map.html)详细介绍了制作和绘制地质图的过程，并成功绘制了东南亚的地质图。本文将介绍用相似的方法绘制中国大陆及临区的地质图。
+用GMT绘制绘制地质图一直是一个难题，此前[Po-Chin Tseng的博客](https://jimmytseng79.github.io/GMT5_tutorials/geology_map.html)详细介绍了制作和绘制地质图的过程，并成功绘制了东南亚的地质图。本文将介绍用相似的方法绘制中国大陆及邻区的地质图。
 
 <!--more-->
 ## 数据来源与格式转换
