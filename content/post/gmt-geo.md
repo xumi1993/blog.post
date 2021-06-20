@@ -19,7 +19,7 @@ draft: False
 GMT提供了命令[`ogr2ogr`](https://docs.gmt-china.org/latest/table/ogr2ogr/)来进行地理矢量数据格式之间的转换，也包括这里的`.shp`格式。解压后的坐标不是我们希望的经纬度坐标，而是大地坐标，这里需要使用`ogr2ogr`中的`-t_srs`参数进行坐标转换。
 
 ```
-ogr2ogr -f GMT geo2al.gmt geo3al.shp -t_srs EPSG:4326
+ogr2ogr -f GMT geo3al.gmt geo3al.shp -t_srs EPSG:4326
 ```
 
 这一步需要注意以下几点
