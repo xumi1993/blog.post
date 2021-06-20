@@ -43,7 +43,7 @@ ogr2ogr -f GMT geo3al.gmt geo3al.shp -t_srs EPSG:4326
 这里我们提供了已经完成上述步骤的地质年代文件和地质年代色标文件，可以在GMT中直接使用。
 
 - [地质年代文件](/source/geo3al.gmt)
-- [地质年代色标文件（GTS2012_periods）](/source/geoage_GEN_GLG.cpt)
+- [地质年代色标文件（修改自GTS2012）](/source/geoage_GEN_GLG.cpt)
 
 ## GMT脚本
 ```shell
