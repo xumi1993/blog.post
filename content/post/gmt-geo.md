@@ -9,7 +9,7 @@ draft: False
 
 <!--more-->
 ## 数据来源与格式转换
-地质图的数据来自美国USGS（[Generalized Geology of the Far East (geo3al)](https://catalog.data.gov/dataset/generalized-geology-of-the-far-east-geo3al)）其分辨率为1:4,000,000。
+地质图的数据来自美国USGS（[Generalized Geology of the Far East (geo3al)](https://catalog.data.gov/dataset/generalized-geology-of-the-far-east-geo3al)）其分辨率为1:5,000,000。源数据和引用格式请参考[这里](https://pubs.er.usgs.gov/publication/ofr97470F)
 
 ### 原始数据下载
 我们所需要的文件可以从[这里](https://certmapper.cr.usgs.gov/data/we/ofr97470f/spatial/shape/geo3al.zip)下载，
@@ -27,7 +27,6 @@ ogr2ogr -f GMT geo2al.gmt geo3al.shp -t_srs EPSG:4326
 - 其中`.dbf`, `.prj` 和 `.shx`文件路径需要与该命令的运行路径为同一路径。
 - 确保在安装GMT后所添加的环境变量中包含`PROJ_LIB`这个变量，请参考[GMT安装说明](https://docs.gmt-china.org/latest/install/macOS/#gmt)
 
-### 修改文件头段
 格式转换后`geo3al.gmt`文件的头段为
 ```
 # @D21315149832.578|1546682.830|v|J|J
@@ -38,41 +37,23 @@ ogr2ogr -f GMT geo2al.gmt geo3al.shp -t_srs EPSG:4326
 123.328886980316 53.3062394894715
 ......
 ```
-我们所需要头段的是岩性`v`（火山岩）和年代`J`（侏罗系），这里我们用`sed`和正则表达式修改文件头段
-```bash
-sed 's/#[[:space:]]@D[[:digit:]]*.[[:digit:]]*|[[:digit:]]*.[[:digit:]]*|\(.*\)|\(.*\)|\(.*\)/> -Z\2 |\1|\2/g; /^#/d' geo3al.gmt > geo3al.xy2
-```
-这时`geo3al.xy2`文件头段被修改为
-```
-> -ZJ |v|J
-123.121278084975 53.3084236387908
-123.230414901407 53.3161680969698
-123.288482121838 53.3166334127133
-123.328886980316 53.3062394894715
-....
-```
-这里通过`-Z`指定年代，配合CPT文件和`plot -L`可以为闭合图形填充颜色，来达到绘制地质图的目的。其中CPT文件格式为
-```
-JK   179/227/238 ; Jurassic-Cretaceous
-J     52/178/201 ; Jurassic
-```
+
 
 ## 下载链接：
 这里我们提供了已经完成上述步骤的地质年代文件和地质年代色标文件，可以在GMT中直接使用。
 
-- [地质年代文件](/source/geo3al.xy2)
-- [地质年代色标文件（GTS2012_periods）](/source/geoage.cpt)
+- [地质年代文件](/source/geo3al.gmt)
+- [地质年代色标文件（GTS2012_periods）](/source/geoage_GEN_GLG.cpt)
 
 ## GMT脚本
 ```shell
-data=geo3al.xy2
+data=geo3al.gmt
 cpt=geoage.cpt
 rocksize=500
 lengsize=0.15i
 
 function shp2xyz(){
-    ogr2ogr -f GMT geo2al.gmt geo3al.shp -t_srs EPSG:4326
-    sed 's/#[[:space:]]@D[[:digit:]]*.[[:digit:]]*|[[:digit:]]*.[[:digit:]]*|\(.*\)|\(.*\)|\(.*\)/> -Z\2 |\1|\2/g; /^#/d' geo3al.gmt > $data
+    ogr2ogr -f GMT $data geo3al.shp -t_srs EPSG:4326
 }
 
 function plot_age_legend(){
@@ -81,13 +62,11 @@ H 10 3 Age of rock units
 G 1p
 N 3
 EOF
-    awk '!/^($|B|F|#)/{print $0}' $cpt | while read label color period
+    awk '!/^($|B|F|N|#)/{print $0}' $cpt | while read label color period
     do
-        if [ $label == "N" ]; then period=Neogene; fi
-        if [ $label == "MZT" ]; then continue; fi
         echo "S 0.3c r $lengsize $color 0.3p 0.7c $period" >> tmp
     done
-    gmt legend tmp -DJBR+w300p/157p+jBR+o0c/-100p+l1.3 -F+p0.7p+g255 -C3p/3p
+    gmt legend tmp -DJBR+w300p/140p+jBR+o0c/-83p+l1.3 -F+p0.7p+g255 -C3p/3p
 
     gmt legend -DJBR+w150p/50p+jBR+o0c/57p+l1.9 -F+p0.7p+g255 -C3p/1p <<EOF
 H 10 3 Rock type
@@ -106,19 +85,10 @@ gmt begin geo3al png
     gmt set MAP_TICK_LENGTH_PRIMARY 0.08
 
     gmt coast -R70/150/13/55 -JM8.6i -Baf -Df -G255 -BWsNe
-    gmt plot $data -C$cpt -L
-
-    gmt gmtconvert $data -S"|v|" > tmp
-    awk '!/^($|B|F|#)/{print $1,"p'$rocksize'/28:F100B"$2}' $cpt > tmp.cpt
-    gmt plot tmp -Ctmp.cpt -L
-
-    gmt gmtconvert $data -S"|i|" > tmp
-    awk '!/^($|B|F|#)/{print $1,"p'$rocksize'/29:F100B"$2}' $cpt > tmp.cpt
-    gmt plot tmp -Ctmp.cpt -L
-
-    gmt gmtconvert $data -S"|w|" > tmp
-    awk '!/^($|B|F|#)/{print $1,"p'$rocksize'/44:F100B"$2}' $cpt > tmp.cpt
-    gmt plot tmp -Ctmp.cpt -L
+    gmt plot $data -C$cpt -aZ="GEN_GLG" -G+z -L
+    gmt convert $data -aI="TYPE" -S"-Iv" | gmt plot -Gp28+r500+f100+b-
+    gmt convert $data -aI="TYPE" -S"-Ii" | gmt plot -Gp29+r500+f100+b-
+    gmt convert $data -aI="TYPE" -S"-Iw" | gmt plot -Gp44+r500+f100+b-
 
     gmt coast -SCADETBLUE1
 
