@@ -15,17 +15,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v2
+    - name: Setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8.7'
+        architecture: x64
     - name: 'Preparation...'
       run: |
           git clone https://github.com/xumi1993/blog.git ./public
-          ls
-          bash install-hugo.sh
           rm -rf themes/even
           git clone https://github.com/xumi1993/hugo-theme-even.git themes/even
           pip install pygments
 
     - name: 'Build'
       run: |
+          bash install-hugo.sh
           ./hugo --baseUrl="https://blog.xumijian.me"
     
     - name: Commit files
