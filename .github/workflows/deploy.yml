@@ -43,7 +43,7 @@ jobs:
     - name: Pushes to blog repository
       uses: cpina/github-action-push-to-another-repository@main
       env:
-        API_TOKEN_GITHUB: ${{ secrets.DEPLOY_KEY }}
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
         source-directory: 'public'
         destination-github-username: 'xumi1993'
