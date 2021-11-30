@@ -96,7 +96,7 @@ for i, x in enumerate(points.values):
 
 ### 线性插值与网格化
 
-先用生成的数据点在三维速度模型中插值，返回一系列散点，再用`pygmt.surface`进行网格化。
+先用生成的数据点在三维速度模型中插值，返回一系列散点，再用`pygmt.surface`进行网格化。我们选用经度作为横坐标，所以`surface`中设置`x=points2d[:, 0], y=points2d[:, 3]`。
 
 ```python
 points_value = interpn((raw_data.depth.values, raw_data.latitude.values, raw_data.longitude.values),
@@ -137,3 +137,5 @@ fig_sec.show()
 ```
 
 ![](/img/pygmt/sec.png)
+
+## [下载Jupyter-notebook](/source/plot_section.ipynb)
