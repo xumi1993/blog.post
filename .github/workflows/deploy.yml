@@ -40,7 +40,7 @@ jobs:
         git config --local user.name "xumi1993"
         git commit -m `date +"%Y.%m.%dT%H:%M%S"` -a
 
-    - name: Pushes to seispy gh-pages repository
+    - name: Pushes to blog repository
       uses: cpina/github-action-push-to-another-repository@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.DEPLOY_KEY }}
