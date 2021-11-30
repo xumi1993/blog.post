@@ -17,7 +17,7 @@ jobs:
     steps:
     - name: 'Preparation...'
       run: |
-          git clone --branch=gh-pages https://github.com/xumi1993/blog.git ./public
+          git clone https://github.com/xumi1993/blog.git ./public
           bash install-hugo.sh
           rm -rf themes/even
           git clone https://github.com/xumi1993/hugo-theme-even.git themes/even
