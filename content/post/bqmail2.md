@@ -44,7 +44,7 @@ bq.query_stations(network='CB', station='LZH')
 **这里所有的参数信息与[FDSN Client Usage](https://service.iris.edu/irisws/fedcatalog/1/)中相同。**
 
 ## 发送连续数据申请
-部分研究需要发送连续数据申请，即从默一时刻到另一时，以隔固定的时间间隔作为SAC文件的时长。
+部分研究需要发送连续数据申请，即从一时刻到另一时刻，以固定的时间间隔作为SAC文件的时长。
 
 ```Python
 bq.send_mail(arrange='continue', starttime=UTCDateTime(2018, 1, 1), 
@@ -57,7 +57,7 @@ bq.send_mail(arrange='continue', starttime=UTCDateTime(2018, 1, 1),
 - `channel`和`location`分别为所申请的通道名和位置名，详见[BREQ_FAST Manuals](http://ds.iris.edu/ds/nodes/dmc/manuals/breq_fast/)。
 
 ## 发送事件数据申请
-另一种申请方式为事件数据申请，即根据搜索的地震事件信息，以某一参考时刻为标准发送数据申请。
+另一种申请方式为事件数据申请，即根据搜索的地震事件信息，以某一参考时刻为标准，前后截取一定时间长度，发送数据申请。
 
 ### 查询事件信息
 在发送申请前需要以一定的限制条件获取事件信息，例如

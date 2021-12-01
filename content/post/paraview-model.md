@@ -109,9 +109,10 @@ Moho文件也是`.xyz`文件，包括经度、纬度和深度三列，Paraview�
 ### 通过GMT生成地形起伏数据
 
 1. 首先用GMT中`grdcut`截取研究区域的地形起伏。
-2. 由于通常地形数据经度较高，反映大范围的地形变化时可能不直观，因此我们用`grdsample`命令对生成的网格文件进行减采样。最后保存为`netCDF`格式文件。
+2. 由于通常地形数据精度较高，反映大范围的地形变化时可能不直观，因此我们用`grdsample`命令对生成的网格文件进行减采样。最后保存为`netCDF`格式文件。
 
 ### 将地形数据转换为多边形网格
+
 ```python
     def create_topo_vtk(self):
         ds = Dataset(self.topo_file)
@@ -125,6 +126,7 @@ Moho文件也是`.xyz`文件，包括经度、纬度和深度三列，Paraview�
         surf = grid.delaunay_2d()
         surf.save('topo.vtk')
 ```
+
 首先用`netcdf4`模块读取减采样后的地形数据文件，然后同Moho面起伏，将其转换为多边形网格并保存。
 
 将以上三种数据的VTK文件导入Paraview，即可绘制他们之间的关系。
