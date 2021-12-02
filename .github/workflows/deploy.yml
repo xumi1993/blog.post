@@ -38,7 +38,6 @@ jobs:
         git config --local user.email "gomijianxu@gmail.com"
         git config --local user.name "xumi1993"
         git commit -m `date +"%Y.%m.%dT%H:%M%S"` -a
-        continue-on-error: true
 
     - name: Pushes to blog repository
       uses: cpina/github-action-push-to-another-repository@main
