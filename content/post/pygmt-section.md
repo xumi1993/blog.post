@@ -118,8 +118,10 @@ fig_sec.grdimage(grid, cmap=True)
 # 将下一张图的锚点上移8.25cm
 fig_sec.shift_origin(yshift="8.25c")
 ```
-> ⚠️注意
-> 引号、反斜杠等需要转义。
+
+{{% admonition type="note" title="⚠️注意" details="false" %}}
+引号、反斜杠等需要转义。
+{{% /admonition %}}
 
 ### 绘制剖面的地形起伏
 

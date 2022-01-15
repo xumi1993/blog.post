@@ -114,7 +114,11 @@ optional arguments:
 - `-e <endtime>`：数据记录的结束时间，用法与`get_events`相同。
 - `-c <channel>`：通道名
 
->⚠️注意：台网名、台站名和通道名支持通配符。
+{{% admonition type="note" title="⚠️注意" details="false" %}}
+台网名、台站名和通道名支持通配符。
+{{% /admonition %}}
+
+<!-- >⚠️注意：台网名、台站名和通道名支持通配符。 -->
 
 ### 实例
  1. 查询CB台网下的所有台站
