@@ -23,8 +23,11 @@ ogr2ogr -f GMT geo3al.gmt geo3al.shp -t_srs EPSG:4326
 ```
 
 {{% admonition type="note" title="⚠️注意" details="false" %}}
+
 - 其中`.dbf`, `.prj` 和 `.shx`文件路径需要与该命令的运行路径为同一路径。
+
 - 确保在安装GMT后所添加的环境变量中包含`PROJ_LIB`这个变量，请参考[GMT安装说明](https://docs.gmt-china.org/latest/install/macOS/#gmt)
+
 {{% /admonition %}}
 
 
