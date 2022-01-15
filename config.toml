@@ -135,21 +135,21 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     hint = 30               # Display hint if the last modified time is more than these days ago.    # 如果文章最后更新于这天数之前，显示提醒
     warn = 180              # Display warning if the last modified time is more than these days ago.    # 如果文章最后更新于这天数之前，显示警告
 
-  [params.gitment]          # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
-    owner = ""              # Your GitHub ID
-    repo = "blog"               # The repo to store comments
-    clientId = "83b0e39119b727cd2ba2"           # Your client ID
-    clientSecret = "2b6f4a9e1459a3e6bafa8afaaa509d755a7cf744"       # Your client secret
+  # [params.gitment]          # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
+  #   owner = ""              # Your GitHub ID
+  #   repo = "blog"               # The repo to store comments
+  #   clientId = "83b0e39119b727cd2ba2"           # Your client ID
+  #   clientSecret = "2b6f4a9e1459a3e6bafa8afaaa509d755a7cf744"       # Your client secret
 
   [params.utterances]       # https://utteranc.es/
     owner = ""              # Your GitHub ID
     repo = ""               # The repo to store comments
 
-  [params.gitalk]           # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
-    owner = "xumi1993"              # Your GitHub ID
-    repo = "blog.post"               # The repo to store comments
-    clientId = "83b0e39119b727cd2ba2"           # Your client ID
-    clientSecret = "2b6f4a9e1459a3e6bafa8afaaa509d755a7cf744"       # Your client secret
+  # [params.gitalk]           # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
+  #   owner = "xumi1993"              # Your GitHub ID
+  #   repo = "blog.post"               # The repo to store comments
+  #   clientId = "83b0e39119b727cd2ba2"           # Your client ID
+  #   clientSecret = "2b6f4a9e1459a3e6bafa8afaaa509d755a7cf744"       # Your client secret
 
   # Valine.
   # You can get your appid and appkey from https://leancloud.cn
