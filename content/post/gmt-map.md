@@ -2,7 +2,7 @@
 title: "用GMT绘制中国及周边构造分区与GPS速度场"
 date: 2020-01-30T23:18:20+08:00
 categories:
-- GMT
+- Mapping
 tags:
 - GMT
 ---

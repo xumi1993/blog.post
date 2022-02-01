@@ -2,7 +2,10 @@
 title: "用GMT、PyVista和Paraview对速度模型、地形起伏、Moho面起伏进行三维可视化"
 date: 2021-03-07T05:12:28+08:00
 draft: false
+tags: ["Python", "GMT", "Paraview"]
+categories: ["Mapping"]
 ---
+
 ![](/img/paraview/model_NW.png)
 我们通过计算获得了地壳三维速度模型、Moho面起伏，为例对比壳内低速区与Moho面起伏的关系，可以将这些结果用Paraview进行三维可视化。由于数据格式的不同，我们需要借助GMT和PyVista辅助绘制。
 <!--more-->

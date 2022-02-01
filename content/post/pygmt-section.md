@@ -2,6 +2,8 @@
 title: "数据切片与绘制的PyGMT实现"
 date: 2021-11-30T20:13:09+08:00
 draft: false
+tags: ["Python", "PyGMT"]
+categories: ["Python"]
 ---
 在GMT绘图前经常需要计算数据并保存到本地，再用GMT调用本地数据文件进行绘图。对数据可视化造成了不便。随着[PyGMT](https://www.pygmt.org/latest/index.html)的出现，我们可以在Python脚本中先进行数据计算，后进行绘图。这不仅提高了数据可视化的效率，也解决了Python对地图绘制能力弱的问题。
 

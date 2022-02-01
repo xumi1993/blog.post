@@ -2,6 +2,8 @@
 title: "用GMT绘制中国大陆及邻区地质年代图"
 date: 2021-05-14T16:34:22+08:00
 draft: False
+tags: ["GMT", "地质图"]
+categories: ["Mapping"]
 ---
 
 ![](/img/gmt-map/geo3al.png)

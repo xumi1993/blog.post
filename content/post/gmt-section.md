@@ -2,7 +2,7 @@
 title: "用GMT绘制极坐标剖面"
 date: 2020-01-19T14:42:33+08:00
 categories:
-- GMT
+- Mapping
 tags:
 - GMT
 ---
