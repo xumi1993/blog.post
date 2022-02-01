@@ -93,7 +93,7 @@ end program
 ```
 
 ## 编译
-由于`npy.f90`是一个Fortran模块所以要先编译这个模块，生成`.mod`文件，再编译上面这个主程序
+由于`npy.f90`是一个Fortran模块，所以要先编译这个模块，生成`.mod`文件，再编译上面这个主程序
 
 ```
 gfortran npy.f90 -c
