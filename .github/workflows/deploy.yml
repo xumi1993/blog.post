@@ -14,12 +14,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.8.7'
-        architecture: x64
+        python-version: '3.10'
     - name: 'Preparation...'
       run: |
           git clone https://github.com/xumi1993/blog.git ./public
