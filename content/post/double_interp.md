@@ -32,7 +32,7 @@ grid_vp = griddata(
 
 这里`dep`, `lat`和`lon`为所需网格深度、纬度和经度方向的坐标，均为一维数组。`points`是原始模型数据，共4列，分别为深度、纬度、经度和数值。这时线性插值后的结果如图。黄色区域即为`NaN`值区域，这样的模型不能满足我们的计算需求。
 
-![](../../static/img/double-interp/t.png)
+![](/img/double-interp/t.png)
 
 ## 2. 用临近点插值将`NaN`值点赋值
 
@@ -56,4 +56,4 @@ result = interpolated.reshape(data.shape)
 
 两次插值之后的结果如下图，`NaN`值部分已经由最底层速度填补。
 
-![](../../static/img/double-interp/tt.png)
+![](/img/double-interp/tt.png)
