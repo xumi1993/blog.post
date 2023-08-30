@@ -64,8 +64,8 @@ plt.scatter(x1grid, y1grid, s=2, color='C1')
 我们在新坐标系下x方向\\(-500 \sim 500m\\)和y方向\\(-600 \sim 600m\\)范围内设置检测版，其中x方向设置6个异常体，y方向设置7个异常体，异常大小为12%
 
 ```python
-x_lim_cb = [-600, 600]
-y_lim_cb = [-500, 500]
+x_lim_cb = [-500, 500]
+y_lim_cb = [-600, 600]
 hx = 2
 hz = 2
 x_cb = np.arange(*x_lim_cb, hx)
